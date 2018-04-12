@@ -6,6 +6,17 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,12 +61,12 @@ public class Student extends AppCompatActivity {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
 
-                        Movie movie = new Movie();
-                        movie.setTitle(jsonObject.getString("title"));
-                        movie.setRating(jsonObject.getInt("rating"));
-                        movie.setYear(jsonObject.getInt("releaseYear"));
+                        Student_Data studentData = new Student_Data();
+                        studentData.setNama_student(jsonObject.getString("title"));
+                        studentData.setAlamat_student(jsonObject.getString("rating"));
+                        studentData.setEmail_student(jsonObject.getString("releaseYear"));
 
-                        movieList.add(movie);
+                        studentList.add(studentData);
                     } catch (JSONException e) {
                         e.printStackTrace();
                         progressDialog.dismiss();
